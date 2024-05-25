@@ -1,16 +1,14 @@
-
+import React, { useState } from 'react';
 import './App.css';
-//import Properties from './/Properties';
-//import Use from './/Use'
-import Person from'.//Person'
+import Fetching from './Api';  // Ensure this is the correct path to your Fetch component
 
-function App(){
-return (
-  <>
-  <Person></Person>
-
- 
-  </>
-)
+function App() {
+  return (
+    <div className="App">
+    
+      <Fetching />
+    </div>
+  );
 }
+
 export default App;
