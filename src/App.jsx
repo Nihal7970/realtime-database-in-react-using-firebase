@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+// src/App.jsx
+import React from 'react';
+import { getDatabase, ref, set } from "firebase/database";
+import app from './firebase';
 import './App.css';
-import Fetching from './Api';  // Ensure this is the correct path to your Fetch component
 
 function App() {
+  const handleDatabaseWrite = () => {
+    const db = getDatabase(app);
+    const userId = 'user123'; // Example userId, change as needed
+
+    set(ref(db, 'users/' + userId), {
+      username: "nihal",
+      email: "tiwari107@gmail.com"
+    })
+    .then(() => {
+      console.log('Data saved successfully!');
+    })
+    .catch((error) => {
+      console.error('Error saving data:', error);
+    });
+  };
+
   return (
-    <div className="App">
-    
-      <Fetching />
-    </div>
+    <>
+      <button onClick={handleDatabaseWrite}>Save to Database</button>
+    </>
   );
 }
 
